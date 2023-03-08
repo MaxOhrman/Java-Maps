@@ -2,6 +2,7 @@ package ohrman.max;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -48,7 +49,22 @@ public class Main {
             }
             System.out.println();
 
-            String direction = scanner.nextLine().toUpperCase();
+            String[] input = scanner.nextLine().split(" ");
+            String direction = null;
+
+            for (String i : input) {
+                if (i.equalsIgnoreCase("north") || i.equalsIgnoreCase("n")) {
+                        direction = "N";
+                    } else if (i.equalsIgnoreCase("south") || i.equalsIgnoreCase("s")) {
+                        direction = "S";
+                    } else if (i.equalsIgnoreCase("east") || i.equalsIgnoreCase("e")) {
+                        direction = "E";
+                    } else if (i.equalsIgnoreCase("west") || i.equalsIgnoreCase("w")) {
+                        direction = "W";
+                    } else if (i.equalsIgnoreCase("quit") || i.equalsIgnoreCase("q")) {
+                    direction = "Q";
+                }
+            }
 
             if(exits.containsKey(direction)) {
                 loc = exits.get(direction);
